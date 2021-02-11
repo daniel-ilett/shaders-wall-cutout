@@ -931,7 +931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63193c6b2ec3dbf4fa397beea5e089ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 2115607263}
+  targetObject: {fileID: 2115607263}
   wallMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1009,7 +1009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115607263}
   m_Layer: 0
-  m_Name: Test
+  m_Name: Target Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

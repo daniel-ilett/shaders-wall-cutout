@@ -5,7 +5,7 @@ using UnityEngine;
 public class CutoutObject : MonoBehaviour
 {
     [SerializeField]
-    private Transform targetTransform;
+    private Transform targetObject;
 
     [SerializeField]
     private LayerMask wallMask;
@@ -19,12 +19,10 @@ public class CutoutObject : MonoBehaviour
 
     private void Update()
     {
-        Vector2 cutoutPos = mainCamera.WorldToViewportPoint(targetTransform.position);
+        Vector2 cutoutPos = mainCamera.WorldToViewportPoint(targetObject.position);
         cutoutPos.y /= (Screen.width / Screen.height);
 
-        Debug.Log(cutoutPos);
-
-        Vector3 offset = targetTransform.position - transform.position;
+        Vector3 offset = targetObject.position - transform.position;
         RaycastHit[] hitObjects = Physics.RaycastAll(transform.position, offset, offset.magnitude, wallMask);
 
         for (int i = 0; i < hitObjects.Length; ++i)
@@ -34,6 +32,8 @@ public class CutoutObject : MonoBehaviour
             for(int m = 0; m < materials.Length; ++m)
             {
                 materials[m].SetVector("_CutoutPos", cutoutPos);
+                materials[m].SetFloat("_CutoutSize", 0.1f);
+                materials[m].SetFloat("_FalloffSize", 0.05f);
             }
         }
     }
